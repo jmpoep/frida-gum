@@ -274,6 +274,13 @@ gum_internal_heap_unref (void)
   _gum_memory_backend_deinit ();
 }
 
+G_GNUC_WEAK gpointer
+gum_memory_allocate_bookkeeping (gsize size,
+                                 gsize alignment)
+{
+  return gum_memory_allocate (NULL, size, alignment, GUM_PAGE_RW);
+}
+
 gpointer
 gum_sign_code_pointer (gpointer value)
 {
